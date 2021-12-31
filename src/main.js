@@ -3,13 +3,12 @@ import { newKitFromWeb3 } from '@celo/contractkit'
 import BigNumber from "bignumber.js"
 import crowdfundingAbi from '../contract/crowdfunding.abi.json'
 import erc20Abi from "../contract/erc20.abi.json"
+import {CFContractAddress, cUSDContractAddress, ERC20_DECIMALS} from "./utils/constants";
 
-const ERC20_DECIMALS = 18
 let kit;
 let contract;
 let projectToBeFundedIndex;
-const CFContractAddress = "0x40822eF5AA678B31a40f3C2AC7376b0fd1249dD8" // addresss to the marketplace contract
-const cUSDContractAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1" // addresss to the cUSD contract
+
 let projects = []
 
 const connectCeloWallet = async function () {
