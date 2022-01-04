@@ -14,11 +14,32 @@ interface IERC20Token {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
+library SafeMath {
+    /**
+     * @dev Returns the addition of two unsigned integers, reverting on
+     * overflow.
+     *
+     * Counterpart to Solidity's `+` operator.
+     *
+     * Requirements:
+     *
+     * - Addition cannot overflow.
+     */
+    function add(uint256 a, uint256 b) internal pure returns (uint256) {
+        uint256 c = a + b;
+        require(c >= a, "SafeMath: addition overflow");
+
+        return c;
+    }
+}
+
+
 contract CrowdFunding {
 
     uint internal projectsLength = 0;
     address internal cUsdTokenAddress = 0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1;
     address public adminAddress;
+    using SafeMath for uint;
 
     struct Project {
         address payable owner;
@@ -77,7 +98,7 @@ contract CrowdFunding {
             _status,
             _flag
         );
-        projectsLength ++;
+        projectsLength.add(1);
     }
 
     function readProduct(uint _index) public view returns (
@@ -126,8 +147,8 @@ contract CrowdFunding {
             ),
             "Transfer failed."
         );
-        projects[_index].amountPledged += amount;
-        projects[_index].donationsMade++;
+        projects[_index].amountPledged.add(amount);
+        projects[_index].donationsMade.add(1);
         if(projects[_index].amountPledged >= projects[_index].goal){
             projects[_index].status = true;
         }
