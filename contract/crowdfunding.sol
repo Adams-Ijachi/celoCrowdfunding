@@ -80,7 +80,7 @@ contract CrowdFunding {
         projectsLength ++;
     }
 
-    function readProduct(uint _index) public view returns (
+    function readProject(uint _index) public view returns (
         address payable,
         string memory,
         string memory,
@@ -137,7 +137,6 @@ contract CrowdFunding {
     //    admin functions
 
     function flagCampaign(uint _index) public isOwner {
-
         projects[_index].flag = true;
 
     }
