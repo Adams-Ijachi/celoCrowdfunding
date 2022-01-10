@@ -1,11 +1,8 @@
 # Install
 
-```
 Live Demo
 
-https://github.com/Adams-Ijachi/celoCrowdfunding/deployments/activity_log?environment=github-pages
-
-```
+https://adams-ijachi.github.io/celoCrowdfunding
 
 ```
 
